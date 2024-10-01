@@ -5,10 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marketplace Categories</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
     <style>
- body {
+     .whatsapp-icon {
+    position: fixed; /* Fixed position to the screen */
+    bottom: 20px;
+    right: 20px; /* Positioned 20px from the right */
+    z-index: 1000;
+}
+
+.whatsapp-icon a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    text-align: center;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.whatsapp-icon a:hover {
+    border: 2px solid; 
+    border-color: #e00000;
+    border-radius: 25%;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
+    flex-grow: 1;
 }
 
 .header {
@@ -38,6 +74,7 @@
 
 .category-container {
     margin-top: 20px;
+    flex-grow: 1;
 }
 
 .category-card {
@@ -82,47 +119,12 @@
 .category-card:hover .category-title {
     color: #007bff;
 }
-#en-button{
-    
-                display: inline-block;
-                outline: 0;
-                cursor: pointer;
-                border-radius: 6px;
-                border: 2px solid #e00000;
-                color: #e00000;
-                background: 0 0;
-                padding: 8px;
-                box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px; 
-                height: 42px;
-                :hover{
-                    background-color: #e00000;
-                    color: #fff;
-                }
-                
-}
-#ar-button{
-    
-    display: inline-block;
-    outline: 0;
-    cursor: pointer;
-    border-radius: 6px;
-    border: 2px solid #e00000;
-    color: #e00000;
-    background: 0 0;
-    padding: 8px;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
-    height: 42px;
-    :hover{
-        background-color: #e00000;
-        color: #fff;
-    }
-    
-}
+
 /* Media query for mobile screens */
 @media (max-width: 767px) {
     .category-card {
         padding: 6px;
-        margin-bottom: 15px; /* Increased margin for more spacing between cards */
+        margin-bottom: 15px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     .category-logo {
@@ -132,7 +134,7 @@
         font-size: 0.75rem;
     }
     .category-container {
-        margin-top: 30px; /* Increased margin for more spacing between sections */
+        margin-top: 30px;
     }
 }
 
@@ -149,43 +151,205 @@
     }
 }
 
-/* Adjusting for iPad Air and similar devices */
 @media (max-width: 1024px) {
-    .container-fluid .row.category-container .col-md-4 {
-        flex: 0 0 33.33%;
-        max-width: 33.33%;
-    }
-}
-
-/* Adjusting for smaller tablets and mobile devices */
-@media (max-width: 768px) {
     .container-fluid .row.category-container .col-md-4 {
         flex: 0 0 50%;
         max-width: 50%;
+        padding: 15px; /* Add padding to create more space around the cards */
+    }
+
+    .category-card {
+        margin-bottom: 30px; /* Space between cards */
     }
 }
 
-/* Adjusting for mobile screens to show 2 divs per row */
+@media (max-width: 768px) {
+    .container-fluid .row.category-container .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 15px; /* Add padding around the cards */
+    }
+
+    .category-card {
+        margin-bottom: 25px; /* Increase margin for mobile spacing */
+    }
+}
+
 @media (max-width: 576px) {
     .container-fluid .row.category-container .col-md-4 {
         flex: 0 0 50%;
         max-width: 50%;
     }
+    
+    .category-card {
+        padding: 10px;
+        margin-bottom: 50px; /* Increase the bottom margin for more spacing */
+    }
+}
+
+#en-button, #ar-button {
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 2px solid #e00000;
+    color: #e00000;
+    background: transparent;
+    padding: 8px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+    height: 42px;
+}
+
+#en-button:hover, #ar-button:hover {
+    background-color: #e00000;
+    color: #fff;
+}
+
+footer {
+    background-color: #e00000;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 40px; /* Add margin to create spacing before the footer */
+    flex-shrink: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px; /* Space between sections */
+}
+
+.footer-section {
+    flex: 1;
+}
+
+.social-media-icons {
+    text-align: left;
+}
+
+.social-media-icons-list {
+    display: flex;
+    gap: 10px; /* Space between social media icons */
+}
+
+.social-media-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-us {
+    text-align: right;
+}
+
+.contact-us a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.contact-us a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 0.5rem;
+        font-size: 0.7rem;
+        margin-top: 30px; /* Adjust spacing for smaller screens */
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-media-icons-list {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 
+/* Business Packages section */
+.business-package-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Aligns logo and text vertically */
+    text-decoration: none; /* Removes underline from the link */
+    margin-left: auto;
+    margin-right: 10px; /* Space between container and the edge */
+}
+
+.business-package-logo {
+    width: 80px; /* Adjust logo size */
+    height: auto;
+}
+
+.business-package-text {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #e00000;
+    text-align: center;
+    font-weight: bold;
+}
+
+.business-package-container:hover .business-package-text {
+    text-decoration: underline; /* Adds underline on hover */
+}
+@media only screen and (max-width: 768px) {
+  .my-float {
+    position: relative;
+    right: 20px; /* Moves the icon 10px to the right */
+  }
+}
+
+
+@media (max-width: 768px) {
+    .business-package-logo {
+        width: 70px;
+    }
+    .business-package-text {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .business-package-logo {
+        width: 60px;
+    }
+    .business-package-text {
+        font-size: 11px;
+    }
+}
+
     </style>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
 </head>
 <body>
-    <body>
+   
        
         <div class="header">
+            
+            
             <a href="https://www.dubizzle.com.lb/">
             <img src="https://cdn.empgroup.com/wp-content/uploads/2023/04/dubizzle-logo-fix-width1.png" alt="Marketplace Logo">
         </a>
-            <div class="search-box">
+            <!-- <div class="search-box">
                 <input type="text" id="search-input" class="form-control" placeholder="Search for a category...">
-            </div>
+            </div> -->
+            <a href="https://olxmena.wufoo.com/forms/dubizzle-lebanon-business-packages/" class="business-package-container">
+                <img src="https://raw.githubusercontent.com/RanimeMerhi/Products-v3/main/Business%20Packages.svg" alt="Business Package Logo" class="business-package-logo">
+                <p class="business-package-text" id="business-package-text">Business Packages</p>
+                        </a>
+            
             <div class="language-toggle">
                 <button id="en-button">EN</button>  <button id="ar-button">AR</button>
             </div>
@@ -214,7 +378,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <a href="mobile_and_accessories.html" class="text-decoration-none text-dark">
                             <div class="category-card">
-                                <img src="https://www.dubizzle.com.lb/assets/mobiles_noinline.09d825b23596fb63149b624156d2b3a9.svg" alt="Mobile & Accessories Logo" class="category-logo" style="width:15%">
+                                <img src="https://www.dubizzle.com.lb/assets/mobiles_noinline.09d825b23596fb63149b624156d2b3a9.svg" alt="Mobile & Accessories Logo" class="category-logo" >
                                 <h2 class="category-title" id="mobile-accessories-title">Mobile & Accessories</h2>
                                 <!-- <div class="more-info">Explore Mobiles</div> -->
                             </div>
@@ -223,7 +387,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <a href="Electronics_Home_Appliances.html" class="text-decoration-none text-dark">
                             <div class="category-card">
-                                <img src="https://www.dubizzle.com.lb/assets/electronics_noinline.c7ce1083110c746b61c464da1aee2cac.svg" alt="Electronics & Appliances Logo" class="category-logo" style="width:15%">
+                                <img src="https://www.dubizzle.com.lb/assets/electronics_noinline.c7ce1083110c746b61c464da1aee2cac.svg" alt="Electronics & Appliances Logo" class="category-logo" >
                                 <h2 class="category-title" id="electronics-title">Electronics & Appliances</h2>
                                 <!-- <div class="more-info">Explore Electronics</div> -->
                             </div>
@@ -323,61 +487,109 @@
                     </div>
                 </div>
             </div>
-                
+            <!-- <div class="whatsapp-icon">
+                <a href="https://olxmena.wufoo.com/forms/dubizzle-lebanon-business-packages/" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="150px;" height="160px;" fill="currentColor" class="bi bi-boxes" viewBox="0 0 16 16">
+                        <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z"/>
+                      </svg>             </a>
+            </div> -->
+           
+            <footer>
+                <div class="footer-content">
+                    <div class="footer-section social-media-icons">
+                        <!-- <h3>Follow Us</h3> -->
+                        <div class="social-media-icons-list">
+                            <a href="https://www.instagram.com/dubizzlelebanon/" target="_blank" aria-label="Instagram">
+                                <img src="https://www.dubizzle.com.lb/assets/iconTikTok_noinline.2ae9750afe5a9ec62147a703caae0d39.svg" alt="Instagram" style="width:30px; height:30px;">
+                            </a>
+                            <a href="https://www.facebook.com/dubizzlelebanon" target="_blank" aria-label="Facebook">
+                                <img src="https://www.dubizzle.com.lb/assets/iconFacebook_noinline.200e3b4e5c25747d4caa3cc8c4b8ec41.svg" alt="Facebook" style="width:30px; height:30px;">
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCPg0SSnmnUeq8rmJpaKjAtg" target="_blank" aria-label="Youtube">
+                                <img src="https://www.dubizzle.com.lb/assets/iconYoutube_noinline.ba0b6c83f0fdcb99203ed892251b2ef8.svg" alt="Youtube" style="width:30px; height:30px;">
+                            </a>
+                            <a href="https://www.linkedin.com/company/dubizzle-lebanon/" target="_blank" aria-label="Linkedin">
+                                <img src="https://www.dubizzle.com.lb/assets/iconLinkedIn_noinline.18fd8e96109c484f0023336db3b66c89.svg" alt="Linkedin" style="width:30px; height:30px;">
+                            </a>
+                            <a href="https://www.tiktok.com/@dubizzlelebanon" target="_blank" aria-label="TikTok">
+                                <img src="https://www.dubizzle.com.lb/assets/iconTikTok_noinline.2ae9750afe5a9ec62147a703caae0d39.svg" alt="TikTok" style="width:30px; height:30px;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-section contact-us">
+                        <p><a href="https://help.dubizzle.com.lb/hc/en-us/requests/new" style="font-size: 16px;">Contact Us</a></p>
+                        <p><a href="https://api.whatsapp.com/send/?phone=96176660119&text&type=phone_number&app_absent=0" class="float" target="_blank" style="text-decoration: none;">
+                            <i class="fa fa-whatsapp my-float" style="color:white;font-size: 36px;"></i>
+                        </a></p>
+                    </div>
+                    
+                </div>
+            </footer>
+            
+    
+    
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-             const searchInput = document.getElementById('search-input');
-             if (searchInput) {
-                 searchInput.addEventListener('input', function() {
-                     const searchQuery = this.value.toLowerCase();
-                     const cards = document.querySelectorAll('.category-card');
-     
-                     cards.forEach(function(card) {
-                         const title = card.querySelector('.category-title').textContent.toLowerCase();
-                         if (title.includes(searchQuery)) {
-                             card.style.display = 'block';
-                         } else {
-                             card.style.display = 'none';
-                         }
-                     });
-                 });
-             }
-     
-             document.querySelectorAll('.category-card').forEach(function(card) {
-                 card.addEventListener('mouseenter', function() {
-                     const logo = card.querySelector('.category-logo');
-                     const title = card.querySelector('.category-title');
-                     const moreInfo = card.querySelector('.more-info');
-     
-                     if (logo && title && moreInfo) {
-                         logo.style.transform = 'scale(1.2)';
-                         title.style.color = '#007bff';
-                         moreInfo.style.opacity = '1';
-                         moreInfo.style.bottom = '20px';
-                     }
-                 });
-     
-                 card.addEventListener('mouseleave', function() {
-                     const logo = card.querySelector('.category-logo');
-                     const title = card.querySelector('.category-title');
-                     const moreInfo = card.querySelector('.more-info');
-     
-                     if (logo && title && moreInfo) {
-                         logo.style.transform = 'scale(1)';
-                         title.style.color = '#333';
-                         moreInfo.style.opacity = '0';
-                         moreInfo.style.bottom = '10px';
-                     }
-                 });
-             });
-         });
-         </script>
-             <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const enButton = document.getElementById('en-button');
-                    const arButton = document.getElementById('ar-button');
-            
+                const searchInput = document.getElementById('search-input');
+                const cards = document.querySelectorAll('.category-card');
+                const enButton = document.getElementById('en-button');
+                const arButton = document.getElementById('ar-button');
+                let currentLanguage = 'en';
+                const urlParams = new URLSearchParams(window.location.search);
+const language = urlParams.get('lang') || 'en';
+switchLanguage(language);
+        
+                if (searchInput) {
+                    searchInput.addEventListener('input', function() {
+                        const searchQuery = this.value.toLowerCase();
+                        cards.forEach(function(card) {
+                            const title = card.querySelector('.category-title').textContent.toLowerCase();
+                            card.style.display = title.includes(searchQuery) ? 'block' : 'none';
+                        });
+                    });
+                }
+        
+                cards.forEach(function(card) {
+                    const logo = card.querySelector('.category-logo');
+                    const title = card.querySelector('.category-title');
+                    const moreInfo = card.querySelector('.more-info');
+        
+                    card.addEventListener('mouseenter', function() {
+                        if (logo && title && moreInfo) {
+                            logo.style.transform = 'scale(1.2)';
+                            title.style.color = '#007bff';
+                            moreInfo.style.opacity = '1';
+                            moreInfo.style.bottom = '20px';
+                        }
+                    });
+        
+                    card.addEventListener('mouseleave', function() {
+                        if (logo && title && moreInfo) {
+                            logo.style.transform = 'scale(1)';
+                            title.style.color = '#333';
+                            moreInfo.style.opacity = '0';
+                            moreInfo.style.bottom = '10px';
+                        }
+                    });
+                });
+        
+                // Function to switch language
+                function switchLanguage(language) {
+                    currentLanguage = language;
+                    localStorage.setItem('selectedLanguage', language); // Use localStorage instead of sessionStorage
+                    enButton.style.display = language === 'en' ? 'none' : 'inline';
+                    arButton.style.display = language === 'ar' ? 'none' : 'inline';
+                    enButton.classList.toggle('active', language === 'en');
+                    arButton.classList.toggle('active', language === 'ar');
+                    updateLanguage();
+                    updateBusinessPackageText();
+                }
+        
+                // Function to update category titles based on language
+                function updateLanguage() {
                     const titles = {
                         'vehicles-title': ['Vehicles', 'مركبات'],
                         'properties-title': ['Properties', 'عقارات'],
@@ -389,67 +601,37 @@
                         'jobs-title': ['Jobs', 'وظائف'],
                         'fashion-beauty-title': ['Fashion & Beauty', 'الموضة والجمال'],
                         'kids-babies-title': ['Kids & Babies', 'مستلزمات أطفال'],
-                        'sports-title': ['Sports & Equipment', 'المعدات الرياضة'],
+                        'sports-title': ['Sports & Equipment', 'المعدات الرياضية'],
                         'hobbies-title': ['Hobbies', 'هوايات'],
                         'services-title': ['Services', 'خدمات']
                     };
-            
-                    function updateLanguage(language) {
-                        for (const id in titles) {
-                            document.getElementById(id).textContent = titles[id][language === 'en' ? 0 : 1];
-                        }
-                        enButton.style.display = language === 'en' ? 'none' : 'inline';
-                        arButton.style.display = language === 'ar' ? 'none' : 'inline';
-                    }
-            
-                    enButton.addEventListener('click', () => {
-                        updateLanguage('en');
-                    });
-            
-                    arButton.addEventListener('click', () => {
-                        updateLanguage('ar');
-                    });
-            
-                    // Initialize the language on page load
-                    updateLanguage('en'); // Set default language to English
-                });
-            </script>
-             <script>
-                const languageButtons = {
-                    en: document.getElementById('en-button'),
-                    ar: document.getElementById('ar-button')
-                };
         
-                const categoryLinks = {
-                    vehicles: document.getElementById('vehicles-link'),
-                    properties: document.getElementById('properties-link'),
-                    // Repeat for all categories
-                };
-        
-                // Update all category links with the selected language
-                function updateCategoryLinks(language) {
-                    const pageSuffix = language === 'ar' ? '?lang=ar' : '';
-                    for (let key in categoryLinks) {
-                        if (categoryLinks.hasOwnProperty(key)) {
-                            categoryLinks[key].href = categoryLinks[key].href.split('?')[0] + pageSuffix;
-                        }
+                    for (const id in titles) {
+                        document.getElementById(id).textContent = titles[id][currentLanguage === 'en' ? 0 : 1];
                     }
                 }
         
-                // Event listeners for language buttons
-                languageButtons.en.addEventListener('click', () => {
-                    document.documentElement.lang = 'en';
-                    updateCategoryLinks('en');
-                });
+                // Function to update the "Business Packages" text based on language
+                function updateBusinessPackageText() {
+                    const businessPackageText = document.getElementById('business-package-text');
+                    if (businessPackageText) {
+                        businessPackageText.innerText = currentLanguage === 'en' ? 'Business Packages' : 'شراء الباقة المختصة';
+                    }
+                }
         
-                languageButtons.ar.addEventListener('click', () => {
-                    document.documentElement.lang = 'ar';
-                    updateCategoryLinks('ar');
-                });
+                enButton.addEventListener('click', () => switchLanguage('en'));
+                arButton.addEventListener('click', () => switchLanguage('ar'));
         
-                // Set default language to English
-                updateCategoryLinks('en');
-            </script>
+                // Initialize language on page load
+                const savedLanguage = localStorage.getItem('selectedLanguage') || 'en'; // Use localStorage
+                switchLanguage(savedLanguage);
+            });
+        </script>
+        
+        
+
+
     </body>
     
+
 </html>
