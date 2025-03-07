@@ -331,7 +331,7 @@ footer {
     </style>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    
+    <link rel="icon" href="./tab_icon.png">
 </head>
 <body>
    
@@ -345,7 +345,7 @@ footer {
             <!-- <div class="search-box">
                 <input type="text" id="search-input" class="form-control" placeholder="Search for a category...">
             </div> -->
-            <a href="https://olxmena.wufoo.com/forms/dubizzle-lebanon-business-packages/" class="business-package-container">
+            <a id="language-link" href="https://forms.gle/tT3DcJkTFx4ny3wf8" class="business-package-container">
                 <img src="https://raw.githubusercontent.com/RanimeMerhi/Products-v3/main/Business%20Packages.svg" alt="Business Package Logo" class="business-package-logo">
                 <p class="business-package-text" id="business-package-text">Business Packages</p>
                         </a>
@@ -500,7 +500,7 @@ footer {
                         <!-- <h3>Follow Us</h3> -->
                         <div class="social-media-icons-list">
                             <a href="https://www.instagram.com/dubizzlelebanon/" target="_blank" aria-label="Instagram">
-                                <img src="https://www.dubizzle.com.lb/assets/iconTikTok_noinline.2ae9750afe5a9ec62147a703caae0d39.svg" alt="Instagram" style="width:30px; height:30px;">
+                                <img src="https://www.dubizzle.com.lb/assets/iconInstagram_noinline.ec70d6493c4fafeab17f652de2d290ec.svg" alt="Instagram" style="width:30px; height:30px;">
                             </a>
                             <a href="https://www.facebook.com/dubizzlelebanon" target="_blank" aria-label="Facebook">
                                 <img src="https://www.dubizzle.com.lb/assets/iconFacebook_noinline.200e3b4e5c25747d4caa3cc8c4b8ec41.svg" alt="Facebook" style="width:30px; height:30px;">
@@ -575,6 +575,8 @@ switchLanguage(language);
                         }
                     });
                 });
+
+                
         
                 // Function to switch language
                 function switchLanguage(language) {
@@ -586,8 +588,10 @@ switchLanguage(language);
                     arButton.classList.toggle('active', language === 'ar');
                     updateLanguage();
                     updateBusinessPackageText();
+                    updateLink(language);
                 }
-        
+                
+                
                 // Function to update category titles based on language
                 function updateLanguage() {
                     const titles = {
@@ -618,6 +622,17 @@ switchLanguage(language);
                         businessPackageText.innerText = currentLanguage === 'en' ? 'Business Packages' : 'شراء الباقة المختصة';
                     }
                 }
+                // Function to update the link based on language
+function updateLink(language) {
+    const linkElement = document.getElementById('language-link'); // Change this to your actual link element ID
+    if (linkElement) {
+        const links = {
+            'en': 'https://forms.gle/tT3DcJkTFx4ny3wf8',  // English version link
+            'ar': 'https://forms.gle/oHamKPJtFMvfaQui9'   // Arabic version link
+        };
+        linkElement.href = links[language];
+    }
+}
         
                 enButton.addEventListener('click', () => switchLanguage('en'));
                 arButton.addEventListener('click', () => switchLanguage('ar'));
